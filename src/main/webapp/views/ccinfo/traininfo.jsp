@@ -32,7 +32,7 @@
 
 
     <p>
-        <button type="button" class="layui-btn layui-btn-primar layui-btn-sm"  onclick="openWin()"><i class="layui-icon layui-icon-add-1">增加</i></button>
+        <button type="button" class="layui-btn layui-btn-primar layui-btn-sm"  onclick="openAdd()"><i class="layui-icon layui-icon-add-1">增加</i></button>
         <button type="button" class="layui-btn layui-btn-danger layui-btn-sm" onclick="deleteRows()"><i class="layui-icon layui-icon-delete">删除</i></button>
     </p>
 </div>
