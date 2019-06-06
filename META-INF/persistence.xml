@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
+    <persistence-unit name="persistenceUnit">
+        <class>cn.edu.bzu.trainwork.entity.Budget</class>
+        <class>cn.edu.bzu.trainwork.entity.Pxjiesuan</class>
+        <class>cn.edu.bzu.trainwork.entity.Pxshenbao</class>
+        <class>cn.edu.bzu.trainwork.entity.Traininfo</class>
+        <class>cn.edu.bzu.trainwork.entity.User</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/train"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
 </persistence>
