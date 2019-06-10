@@ -1,5 +1,7 @@
 package cn.edu.bzu.trainwork.controller;
 
+import cn.edu.bzu.trainwork.common.AjaxResult;
+import cn.edu.bzu.trainwork.common.BaseController;
 import cn.edu.bzu.trainwork.common.TableDataInfo;
 import cn.edu.bzu.trainwork.entity.Traininfo;
 import cn.edu.bzu.trainwork.service.ITraininfoService;
@@ -14,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/ccinfo")
-public class TraininfoController {
+public class TraininfoController extends BaseController {
     @Autowired
     ITraininfoService traininfoService;
 
@@ -24,11 +26,11 @@ public class TraininfoController {
     }
 
     @PostMapping("add")
-    public String  add(Traininfo traininfo)
+    public AjaxResult add(Traininfo traininfo)
     {
         System.out.println("add");
         traininfoService.save(traininfo);
-        return "success";
+        return success();
     }
     @DeleteMapping("del/{id}")
     public String delete(@PathVariable("id") Integer id)
@@ -41,12 +43,5 @@ public class TraininfoController {
      * 响应请求分页数据
      */
 
-    protected TableDataInfo getDataTable(List <?> list) {
-        TableDataInfo rspData = new TableDataInfo();
-        rspData.setCode(0);
-        rspData.setRows(list);
-        rspData.setTotal(list.size());
-        return rspData;
-    }
 
 }

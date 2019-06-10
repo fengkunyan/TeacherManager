@@ -11,7 +11,7 @@
     <%@ include file="/commons/basejs.jsp" %></head>
 <body>
 
-<form class="layui-form" action="">
+<form class="layui-form" id="form-ccinfo-add" action="">
     <div class="layui-form-item">
         <label class="layui-form-label">标题</label>
         <div class="layui-input-block">
@@ -26,6 +26,27 @@
     </div>
 
 </form>
+<script>
+    uri="/ccinfo/add";
+    function submitHandler(){
+            var data = $("#form-ccinfo-add").serializeArray();
+        var config = {
+            url:uri ,
+            type: "post",
+            dataType: "json",
+            data: data,
+            success: function(result) {
+                alert("result");
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+                parent.$("#dg").datagrid("reload");
 
+            }
+        };
+        $.ajax(config);
+            //alert(data);
+           // saveTab(prefix + "/add", data);
+    }
+</script>
 </body>
 </html>

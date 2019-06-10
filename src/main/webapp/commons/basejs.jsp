@@ -14,7 +14,7 @@
 <script type="text/javascript" src="${staticPath }/js/jquery-easyui/jquery.min.js"></script>
 <script type="text/javascript" src="${staticPath }/js/jquery-easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${staticPath }/js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="${staticPath }/layui/layui.js"></script>
+<script type="text/javascript" src="${staticPath }/layui/layui.all.js"></script>
 
 
 <script type="text/javascript" src="${staticPath }/js/train/train.js"></script>
