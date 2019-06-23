@@ -1,10 +1,12 @@
 package cn.edu.bzu.trainwork.common;
 
+import cn.edu.bzu.trainwork.common.page.TableDataInfo;
 import cn.edu.bzu.trainwork.utils.DateUtils;
 import cn.edu.bzu.trainwork.utils.ServletUtils;
 import cn.edu.bzu.trainwork.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
@@ -71,11 +73,11 @@ public class BaseController
      * 响应请求分页数据
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    protected TableDataInfo getDataTable(List <?> list) {
+    protected TableDataInfo getDataTable(Page page) {
         TableDataInfo rspData = new TableDataInfo();
         rspData.setCode(0);
-        rspData.setRows(list);
-        rspData.setTotal(list.size());
+        rspData.setRows(page.getContent());
+        rspData.setTotal(page.getTotalElements());
         return rspData;
     }
 

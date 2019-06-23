@@ -26,9 +26,9 @@
     </thead>
 </table>
 <div id="tb" style="font-size: large">
-    开始日期: <input class="easyui-datebox" style="font-size: large">
-    结束日期: <input class="easyui-datebox" style="font-size: large">
-    <button type="button" class="layui-btn layui-btn-primar layui-btn-sm layui-btn-normal"  onclick="opedAddDialog()"><i class="layui-icon layui-icon-search">查询</i></button>
+    开始日期: <input type="text" class="easyui-datebox" id="beginDate" style="font-size: large">
+    结束日期: <input type="text"  class="easyui-datebox" id="endDate" style="font-size: large">
+    <button type="button" class="layui-btn layui-btn-primar layui-btn-sm layui-btn-normal"  onclick="search()"><i class="layui-icon layui-icon-search">查询</i></button>
 
 
     <p>
@@ -50,8 +50,8 @@
     }
 
     function operateFormatter(value, row, index) {
-        var htmlstr = '<button class="layui-btn layui-btn-xs" onclick="openEditDiag(\'' + row.userId + '\')">编辑</button>';
-        htmlstr += '<button class="layui-btn layui-btn-xs layui-btn-danger" onclick="deleteRow(\'' + row.userId + '\')">删除</button>';
+        var htmlstr = '<button class="layui-btn layui-btn-xs" onclick="openEditDiag(\'' + row.infoId + '\')">编辑</button>';
+        htmlstr += '<button class="layui-btn layui-btn-xs layui-btn-danger" onclick="deleteRow(\'' + row.infoId + '\')">删除</button>';
         return htmlstr;
 
     }
@@ -59,7 +59,21 @@
     function formatDate(value,row,index){
         return $.common.formatDate(value);
     }
+    function search() {
 
+        var bd=$('#beginDate').datebox('getValue');
+
+        var ed=$("#endDate").datebox('getValue');
+        //alert(bd);
+        $("#dg").datagrid("load",{
+                queryParams:{
+                beginDate:bd,
+                endDate:ed,
+            },
+            sortName:"createTime",
+            sortOrder:"desc"
+        })
+    }
    function  del() {
        var row=$("#dg").datagrid('getSelected');
 

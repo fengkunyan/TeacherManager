@@ -27,8 +27,6 @@ layui.use('layer', function () { //独立版的layer无需执行这一句
     ;
     if ($.common.isEmpty(callback)) {
         callback =function (index,layero) {
-            alert("dsds");
-
             var frameId=document.getElementById('owin').getElementsByTagName("iframe")[0].id;
             $('#'+frameId)[0].contentWindow.submitHandler();
 
@@ -60,6 +58,25 @@ layui.use('layer', function () { //独立版的layer无需执行这一句
     {
          layer.closeAll();
     }
+    window.delRow=function (id) {
+        layer.confirm('真的删除行么', function(index){
+             layer.close(index);
+            var uri = $.common.isEmpty(id) ? option.remove : option.remove.replace("{id}", id);
+            alert(uri);
+            var config = {
+                url:uri ,
+                type: "delete",
+                dataType: "json",
+                success: function(result) {
+
+                    $("#dg").datagrid("reload");
+
+                }
+            };
+            $.ajax(config);
+            //向服务端发送删除指令
+        });
+    }
 });
 
 
@@ -78,52 +95,16 @@ layui.use('layer', function () { //独立版的layer无需执行这一句
 }
 
 function openAdd() {
-    openWin(option.modalTitle+"增加","add.jsp","保存");
+    openWin(option.modalTitle+"增加",option.createUrl,"保存");
 }
+function deleteRow(id)
+{
+   delRow(id);
 
-function  opedAddDialog() {
-    alert("win");
-    $('#win').dialog({
-        title: option.modalTitle,
-        width: 950,
-        height: 500,
-        closed: false,
-        cache: false,
-        href: 'add.jsp',
-        modal: true,
-        buttons: [{
-            text: '保存',
-             handler: function ()
-             {
-                 alert("windows");
-             }
-         }, {
-             text: '关闭',
-             handler: function () {
-                 win.dialog('close');
-             }
-         }],
+  }
+  function  openEditDiag(id) {
+      var uri = $.common.isEmpty(id) ? option.updateUrl : option.updateUrl.replace("{id}", id);
+      openWin(option.modalTitle+"编辑",uri,"保存");
 
-    });
-// }
-//     var win = $("#win"); // 创建form表单元素
-//     win.dialog({
-//         title: option.modalTitle,
-//         width: 950,
-//         height: 500,
-//         closed: false,
-//         cache: false,
-//         href: 'add.jsp',
-//         modal: true,
-//         buttons: [{
-//             text: '保存',
-//             handler: submit // 调用下面自定义方法ajaxSubmit()
-//         }, {
-//             text: '关闭',
-//             handler: function () {
-//                 win.dialog('close');
-//             }
-//         }],
-//
-//     });
-}
+  }
+

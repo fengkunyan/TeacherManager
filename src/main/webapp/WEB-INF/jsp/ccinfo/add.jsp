@@ -36,8 +36,7 @@
             dataType: "json",
             data: data,
             success: function(result) {
-                alert("result");
-                var index = parent.layer.getFrameIndex(window.name);
+               var index = parent.layer.getFrameIndex(window.name);
                 parent.layer.close(index);
                 parent.$("#dg").datagrid("reload");
 

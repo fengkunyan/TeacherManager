@@ -39,7 +39,7 @@
 <div region="center">
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-help'">
-            <iframe id="iframe" frameborder="0" scrolling="auto" style="width:100%;height:100%" src="/views/ccinfo/traininfo.jsp">
+            <iframe id="iframe" frameborder="0" scrolling="auto" style="width:100%;height:100%" src="${staticPath}/ccinfo/">
 
             </iframe>
 
